@@ -17,13 +17,7 @@ const closeSettingsBtn = document.getElementById('close-settings-btn');
 function addMessage(text, sender) {
     const msgDiv = document.createElement('div');
     msgDiv.classList.add('message', sender);
-
-    // Simple markdown-ish rendering for the bot (handling newlines at least)
-    if (sender === 'bot') {
-        msgDiv.innerText = text;
-    } else {
-        msgDiv.innerText = text;
-    }
+    msgDiv.innerText = text;
 
     chatContainer.appendChild(msgDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight;
