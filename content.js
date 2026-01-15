@@ -19,7 +19,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     // remove /edit and anything after, append /export
                     // e.g. .../d/KEY/edit -> .../d/KEY/export
                     const baseUrl = window.location.href.split('/edit')[0];
-                    const exportUrl = `${baseUrl}/export?format=csv&gid=${gid}`;
+                    // Add timestamp to prevent caching of old data
+                    const exportUrl = `${baseUrl}/export?format=csv&gid=${gid}&t=${Date.now()}`;
 
                     try {
                         const response = await fetch(exportUrl);

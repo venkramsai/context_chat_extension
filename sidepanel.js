@@ -159,6 +159,18 @@ async function populateModels(currentModel) {
 // --- Event Listeners ---
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Auto-focus input for immediate typing
+    // Small timeout ensures the side panel animation/rendering is complete
+    setTimeout(() => userInput.focus(), 100);
+
+    // Also focus when the window itself gains focus (e.g. clicking back into the panel)
+    window.addEventListener('focus', () => {
+        // Only focus if we aren't already focused on something else (likesettings)
+        if (document.activeElement !== apiKeyInput && document.activeElement !== modelSelect) {
+            userInput.focus();
+        }
+    });
+
     sendBtn.addEventListener('click', handleSend);
 
     userInput.addEventListener('keypress', (e) => {
