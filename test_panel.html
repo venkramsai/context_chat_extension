@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Side Panel Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            border: 5px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test Harness</h1>
+    <!-- Paste of Side Panel Content for Testing -->
+    <div class="app-container">
+        <header>
+            <h1>Context Chat</h1>
+            <button id="settings-btn">⚙️</button>
+        </header>
+        <div id="chat-container"></div>
+        <div class="input-area">
+            <textarea id="user-input"></textarea>
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <input type="password" id="api-key" placeholder="Key">
+            <div style="display:flex"><select id="model-select"></select><button id="refresh-models-btn">R</button>
+            </div>
+            <button id="save-key-btn">Save</button>
+            <button id="close-settings-btn">Close</button>
+        </div>
+    </div>
+    <script>
+        // Mock Chrome
+        window.chrome = { storage: { local: { get: (k, cb) => cb({}), set: (v, cb) => cb() } }, tabs: { query: async () => [{ id: 1 }], sendMessage: async () => ({ content: "test" }) } };
+    </script>
+    <script src="llm_client.js"></script>
+    <script src="sidepanel.js"></script>
+</body>
+
+</html>

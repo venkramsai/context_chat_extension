@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Context Chat</h1>
+            <button id="settings-btn" title="Settings">⚙️</button>
+        </header>
+
+        <div id="chat-container">
+            <div class="message system">
+                Welcome! Open a page and ask me anything about its content.
+            </div>
+        </div>
+
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Ask a question..." rows="1"></textarea>
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal for API Key -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <label for="api-key">Gemini API Key</label>
+            <input type="password" id="api-key" placeholder="Enter your Gemini API Key">
+
+            <label for="model-select">Model Name</label>
+            <div style="display:flex; gap:5px;">
+                <select id="model-select" style="flex:1;">
+                    <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+                </select>
+                <button id="refresh-models-btn" title="Refresh Models">🔄</button>
+            </div>
+
+            <div class="modal-actions">
+                <button id="save-key-btn">Save</button>
+                <button id="close-settings-btn">Close</button>
+            </div>
+            <p class="note">Get your key from <a href="https://aistudio.google.com/" target="_blank">Google AI
+                    Studio</a></p>
+        </div>
+    </div>
+
+    <script src="llm_client.js"></script>
+    <script src="sidepanel.js"></script>
+</body>
+
+</html>
